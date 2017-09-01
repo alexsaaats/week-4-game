@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>~Alex's Crystals Collector Game~</title>
+  <!-- CSS reset sheet --> 
+  <link rel="stylesheet" type="text/css" href="Assets/CSS/reset.css">
+  <!-- current version of bootstrap --> 
+  <link rel=“stylesheet” href=“https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css” integrity=“sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ” crossorigin=“anonymous”>
+  <!-- themed bootstrap sheet --> 
+  <link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css">
+  <!-- my stylesheet -->
+  <link rel="stylesheet" type="text/css" href="Assets/CSS/style.css">
+  <!-- adding in jquery --> 
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+  <!-- adding in bootstrap js -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- my js game file -->
+  <script src="Assets/javascript/game.js"></script>
+  <!-- Icons file -->
+  <script src="https://use.fontawesome.com/c8b6d2fc87.js"></script>
+</head>
+
+
+<body>
+<!-- Header section with jumbotron and nav bar, where nav is for gameplay -->
+<div id="header-section">
+	<div class="jumbotron">
+    <div class="text-center"><i class="fa fa-diamond fa-5x" style="Color:#50C878;"></i></div>
+		<h1 class="text-center" id="pagetitle"><strong>Crystals Collector</strong></h1>
+		<h3 class="text-center">Try to match the total score without going over.</h3>
+    <h5 class="text-center">Be careful, the value of the Crystals starts over each time.</h5><br/>
+    <center><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">How It Works</button></center>
+	</div>
+</div>
+
+<!-- How it works Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">How The Game Works</h4>
+      </div>
+        <div class="modal-body">
+          <p>You will be given a random number at the start of the game. 
+          <br/><br/>
+          There are four crystals (icons) below. By clicking on an icon you will add a specific amount of points to your total score. 
+          <br/><br/>
+          You win the game by matching your total score to the Random Number, but you lose the game if your score goes over the Random Number.
+          <br/><br/>
+          The value of each crystal is hidden from you until you click on it. Each time the game restarts, the value of the crystals will reset to a different number.</p>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- main div containing the game page elements --> 
+<div id="game-section">
+
+<!-- Gem elements in a row --> 
+<div class="container">
+  <div class="row">
+      <center>
+      <img id="gemimg1" width="100" height="100" src="Assets/Images/gem1.png">
+      <img id="gemimg2" width="100" height="100" src="Assets/Images/gem2.png">
+      <img id="gemimg3" width="100" height="100" src="Assets/Images/gem3.png">
+      <img id="gemimg4" width="100" height="100" src="Assets/Images/gem4.jpg">
+      </center>
+      <br/>
+      <div id="winloseline"> </div>
+  </div>
+</div>
+
+<!-- first row full width showing the guesses you have made --> 
+<div class="container">
+  <div class="row">
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+              <div class="panel-heading">
+              <h3 class="panel-title">Random Score to Beat</h3>
+              </div>
+              <div class="panel-body">
+              <div class="text-center">Don't let your score go above this:</div>
+              <br/>
+              <div class="text-center scoreclass" id="randomnum-div">Waiting...</div>
+              </div>
+            </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="panel panel-default">
+              <div class="panel-heading">
+              <h3 class="panel-title">Your Score</h3>
+              </div>
+              <div class="panel-body">
+              <div class="text-center">The sum of your points from Collecting Crystals:</div>
+              <br/>
+              <div class="text-center scoreclass" id="userscore">Click a gem to start...</div>
+              </div>
+            </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+
+      <div class="col-sm-4">
+      </div>
+
+      <div class="col-sm-4">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+              <h3 class="panel-title">Wins/Losses</h3>
+              </div>
+              <div class="panel-body">
+              <div class="text-center">Wins:</div>
+              <div class="text-center" id="wins-div">0</div>
+              <div class="text-center">Losses:</div>
+              <div class="text-center" id="losses-div">0</div>
+              </div>
+            </div>
+      </div>
+
+      <div class="col-sm-4">
+      </div>
+
+    </div>
+</div>
+
+</div>
