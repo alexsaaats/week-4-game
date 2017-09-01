@@ -1,16 +1,20 @@
-// jquery document iniatlize
+// jquery document iniatlize and page load actions
 $(document).ready(function() {
 	console.log("Game has started")
 
-// create the random number to start the game on page load (19 to 120)
-var randomnumber = null;
 
+var losses = 0;
+var wins = 0;
+var yourscore = 0;
+
+// create the random number to start the game on page load (19 to 120)
 var randomnumber = Math.floor(Math.random() * 100) + 19;
 console.log(randomnumber);
 $("#randomnum-div").text(randomnumber);
 
 
-// assign new point values to each gem on page load (1 to 12 points each)
+
+// function to assign new point values to each gem on function invocation (1 to 12 points each)
 var gem1 = Math.floor(Math.random() * 12) + 1;
 console.log("Gem 1 = " + gem1);
 
@@ -24,18 +28,57 @@ var gem4 = Math.floor(Math.random() * 12) + 1;
 console.log("Gem 4 = " + gem4);
 
 
+
 // save the points from each gem to YOUR SCORE on each gem click
-var yourscore = 0;
-
 $("#gemimg1").on("click", function() {
-	var newscore = yourscore + gem1;
-	$("#userscore").text(newscore);
-})
+	yourscore = yourscore + gem1;
+	$("#userscore").text(yourscore);
+		loser();
+		winner();
+});
+
+$("#gemimg2").on("click", function() {
+	yourscore = yourscore + gem2;
+	$("#userscore").text(yourscore);
+		loser();
+		winner();
+});
+
+$("#gemimg3").on("click", function() {
+	yourscore = yourscore + gem3;
+	$("#userscore").text(yourscore);
+		loser();
+		winner();
+});
+
+$("#gemimg4").on("click", function() {
+	yourscore = yourscore + gem4;
+	$("#userscore").text(yourscore);
+		loser();
+		winner();
+});
 
 
-// save a win if you match the random number
+// Winner function to save wins and update DOM
+function winner() {
+if (yourscore === randomnumber) {
+	console.log("You Won");
+	$("#winloseline").text("WON");
+	wins++;
+	$("#wins-div").text(wins);
+}};
 
-// save a loss if your number goes over
+
+// Loser function to save losses and update DOM
+function loser() {
+	if (yourscore > randomnumber) {
+	console.log("you lost");
+	$("#winloseline").text("LOST");
+	losses++;
+	$("#losses-div").text(losses);
+}};
+
+//game reset function that keeps wins and losses but sets new random num and gem values
 
 
 //End the document ready function
