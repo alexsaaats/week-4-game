@@ -2,3 +2,15 @@
 	font-size: 24px;
 	color: #50C878;
 }
+
+.winclass {
+	font-size: 30px;
+	color: #50C878;
+	text-align: center;
+}
+
+.loseclass {
+	font-size: 30px;
+	color: #ff0000;
+	text-align: center;
+}
