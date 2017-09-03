@@ -6,14 +6,13 @@ var losses = 0;
 var wins = 0;
 var yourscore = 0;
 
-
 // create the random number to start the game on page load (19 to 120)
 var randomnumber = Math.floor(Math.random() * 100) + 19;
 console.log(randomnumber);
 $("#randomnum-div").text(randomnumber);
 
 
-// function to assign new point values to each gem on function invocation (1 to 12 points each)
+// assign new point values to each gem on game load (1 to 12 points each)
 var gem1 = Math.floor(Math.random() * 12) + 1;
 console.log("Gem 1 = " + gem1);
 
@@ -33,7 +32,7 @@ $("#gemimg1").on("click", function() {
 	$("#userscore").text(yourscore);
 		loser();
 		winner();
-});
+	});
 
 $("#gemimg2").on("click", function() {
 	yourscore = yourscore + gem2;
@@ -64,6 +63,7 @@ if (yourscore === randomnumber) {
 	window.alert("You won! Great work. Play again. Your score will reset now.");
 	wins++;
 	$("#wins-div").text(wins);
+	easterwin();
 	reset();
 }};
 
@@ -75,6 +75,7 @@ function loser() {
 	window.alert("You lost. Please try again. Your score will reset now.");
 	losses++;
 	$("#losses-div").text(losses);
+	easterloss();
 	reset();
 }};
 
@@ -90,20 +91,34 @@ function reset() {
 	console.log(randomnumber);
 	$("#randomnum-div").text(randomnumber);
 
-	var gem1 = Math.floor(Math.random() * 12) + 1;
+	gem1 = Math.floor(Math.random() * 12) + 1;
 	console.log("Gem 1 = " + gem1);
 
-	var gem2 = Math.floor(Math.random() * 12) + 1;
+	gem2 = Math.floor(Math.random() * 12) + 1;
 	console.log("Gem 2 = " + gem2);
 
-	var gem3 = Math.floor(Math.random() * 12) + 1;
+	gem3 = Math.floor(Math.random() * 12) + 1;
 	console.log("Gem 3 = " + gem3);
 
-	var gem4 = Math.floor(Math.random() * 12) + 1;
+	gem4 = Math.floor(Math.random() * 12) + 1;
 	console.log("Gem 4 = " + gem4);
 
-}
+};
 
+// Easter egg for 5 wins or 5 losses
+function easterwin () {
+		if (wins === 5) {
+			$("#winnerModal").modal("toggle");
+			console.log("Winner egg called");
+		}
+};
+
+function easterloss() {
+		if (losses === 5) {
+			$("#loserModal").modal("toggle");
+			console.log("Loser egg called");
+		}
+};
 
 //End the document ready function
 });
